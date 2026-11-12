@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Logo from "./logo";
+import { ArrowUpRight } from "lucide-react";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -47,10 +48,7 @@ export default function Navbar() {
       (entries) => {
         const visibleSections = entries
           .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
-          );
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
         if (visibleSections.length > 0) {
           setActiveSection(visibleSections[0].target.id);
@@ -66,7 +64,7 @@ export default function Navbar() {
          */
         rootMargin: "-20% 0px -65% 0px",
         threshold: [0, 0.05, 0.1, 0.2],
-      }
+      },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -120,27 +118,25 @@ export default function Navbar() {
               >
                 {/* Active background */}
                 {isActive && (
-                  <span
-                    className="absolute inset-0 -z-10 rounded-full bg-white/[0.09] shadow-[0_0_25px_rgba(255,255,255,0.04)]"
-                  />
+                  <span className="absolute inset-0 -z-10 rounded-full bg-white/[0.09] shadow-[0_0_25px_rgba(255,255,255,0.04)]" />
                 )}
 
-                <span className="relative">
-                  {item.label}
-                </span>
+                <span className="relative">{item.label}</span>
               </button>
             );
           })}
         </div>
 
         {/* Contact */}
-        <Link
-          href="#contact"
-          onClick={() => setActiveSection("contact")}
-          className="group rounded-full border border-white/[0.1] px-5 py-2.5 text-sm text-neutral-300 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05] hover:text-white"
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-neutral-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.07] hover:text-white md:inline-flex"
         >
-          Let&apos;s Talk
-        </Link>
+          Resume
+          <ArrowUpRight className="h-4 w-4" />
+        </a>
       </nav>
     </header>
   );
