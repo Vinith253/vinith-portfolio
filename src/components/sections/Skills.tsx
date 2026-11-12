@@ -6,7 +6,6 @@ import {
   Layers3,
   Smartphone,
   Sparkles,
-  Terminal,
 } from "lucide-react";
 
 import Container from "@/src/components/ui/Container";
@@ -18,8 +17,10 @@ const skillGroups = [
     number: "01",
     title: "Mobile Engineering",
     description:
-      "Building production-grade cross-platform and native mobile applications.",
+      "Building production-grade cross-platform applications with deep native platform experience.",
     icon: Smartphone,
+        featured: true,
+
     skills: [
       "React Native",
       "TypeScript",
@@ -34,7 +35,7 @@ const skillGroups = [
     number: "02",
     title: "Architecture",
     description:
-      "Designing scalable application structures with performance and maintainability in mind.",
+      "Designing scalable mobile systems with clear boundaries, performance, and long-term maintainability.",
     icon: Layers3,
     skills: [
       "New Architecture",
@@ -50,7 +51,7 @@ const skillGroups = [
     number: "03",
     title: "State & Data",
     description:
-      "Building predictable data flows and reliable persistence layers.",
+      "Designing predictable state flows, local persistence, and reliable data access layers.",
     icon: Database,
     skills: [
       "Redux Toolkit",
@@ -66,7 +67,7 @@ const skillGroups = [
     number: "04",
     title: "Engineering Systems",
     description:
-      "Improving development workflows, automation, quality, and delivery.",
+      "Improving developer workflows through automation, quality gates, and reliable delivery pipelines.",
     icon: GitBranch,
     skills: [
       "Git",
@@ -82,8 +83,9 @@ const skillGroups = [
     number: "05",
     title: "AI Engineering",
     description:
-      "Exploring practical applications of LLMs across the software development lifecycle.",
+      "Applying LLMs and AI-assisted workflows to improve how software is built, reviewed, and maintained.",
     icon: BrainCircuit,
+    featured: true,
     skills: [
       "LLM Integration",
       "AI Code Review",
@@ -96,10 +98,12 @@ const skillGroups = [
   },
   {
     number: "06",
-    title: "Development",
+    title: "Frontend & Development",
     description:
-      "Strong fundamentals across frontend engineering and developer tooling.",
-    icon: Terminal,
+      "Strong foundations across frontend engineering, APIs, debugging, and modern developer tooling.",
+    icon: Code2,
+        featured: true,
+
     skills: [
       "React",
       "Next.js",
@@ -122,8 +126,8 @@ export default function Skills() {
         <ScrollReveal>
           <SectionHeading
             eyebrow="Skills"
-            title="The tools behind the work."
-            description="A practical engineering stack built around mobile development, architecture, automation, and emerging AI capabilities."
+            title="The engineering stack behind the work."
+            description="A practical stack built around mobile engineering, scalable architecture, production systems, and AI-powered developer workflows."
           />
         </ScrollReveal>
 
@@ -136,15 +140,40 @@ export default function Skills() {
                 key={group.title}
                 delay={index * 0.07}
               >
-                <article className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.015] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-white/[0.15] hover:bg-white/[0.025]">
-                  <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-blue-500/[0.04] opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-100" />
+                <article
+                  className={`group relative h-full overflow-hidden rounded-2xl border p-7 transition-all duration-500 hover:-translate-y-1 ${
+                    group.featured
+                      ? "border-violet-400/[0.16] bg-violet-500/[0.018] hover:border-violet-400/[0.24] hover:bg-violet-500/[0.03]"
+                      : "border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.025]"
+                  }`}
+                >
+                  {/* Ambient glow */}
+                  <div
+                    aria-hidden="true"
+                    className={`pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full blur-3xl opacity-0 transition-opacity duration-700 group-hover:opacity-100 ${
+                      group.featured
+                        ? "bg-violet-500/[0.08]"
+                        : "bg-blue-500/[0.04]"
+                    }`}
+                  />
 
                   <div className="relative">
+                    {/* Header */}
                     <div className="flex items-center justify-between">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.025]">
+                      <div
+                        className={`flex h-11 w-11 items-center justify-center rounded-xl border ${
+                          group.featured
+                            ? "border-violet-400/[0.16] bg-violet-400/[0.05]"
+                            : "border-white/[0.08] bg-white/[0.025]"
+                        }`}
+                      >
                         <Icon
                           size={19}
-                          className="text-blue-300/70"
+                          className={
+                            group.featured
+                              ? "text-violet-300/80"
+                              : "text-blue-300/70"
+                          }
                         />
                       </div>
 
@@ -153,19 +182,30 @@ export default function Skills() {
                       </span>
                     </div>
 
-                    <h3 className="mt-7 text-xl font-semibold tracking-tight text-white">
-                      {group.title}
-                    </h3>
+                    {/* Title */}
+                    <div className="mt-7 flex items-center gap-2">
+                      <h3 className="text-xl font-semibold tracking-tight text-white">
+                        {group.title}
+                      </h3>
 
+                      {group.featured && (
+                        <span className="rounded-full border border-violet-400/[0.14] bg-violet-400/[0.05] px-2 py-1 text-[9px] font-medium uppercase tracking-[0.15em] text-violet-300/70">
+                          Focus
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Description */}
                     <p className="mt-3 text-sm leading-6 text-neutral-500">
                       {group.description}
                     </p>
 
+                    {/* Skills */}
                     <div className="mt-6 flex flex-wrap gap-2">
                       {group.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[11px] text-neutral-500 transition-colors duration-300 group-hover:text-neutral-400"
+                          className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[11px] text-neutral-500 transition-all duration-300 group-hover:border-white/[0.11] group-hover:text-neutral-400"
                         >
                           {skill}
                         </span>
@@ -173,18 +213,29 @@ export default function Skills() {
                     </div>
                   </div>
 
-                  <div className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-blue-400/60 via-violet-400/30 to-transparent transition-transform duration-700 group-hover:scale-x-100" />
+                  {/* Bottom accent */}
+                  <div
+                    aria-hidden="true"
+                    className={`absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r transition-transform duration-700 group-hover:scale-x-100 ${
+                      group.featured
+                        ? "from-violet-400/70 via-blue-400/40 to-transparent"
+                        : "from-blue-400/60 via-violet-400/30 to-transparent"
+                    }`}
+                  />
                 </article>
               </ScrollReveal>
             );
           })}
         </div>
 
+        {/* Closing statement */}
         <ScrollReveal delay={0.3}>
-          <div className="mt-8 flex items-center gap-3 text-sm text-neutral-600">
-            <Sparkles size={15} />
+          <div className="mt-10 flex items-center gap-3 text-sm text-neutral-600">
+            <Sparkles size={15} className="text-violet-400/50" />
+
             <span>
-              Always learning, experimenting, and improving the stack.
+              Always learning, experimenting, and improving the way
+              software is built.
             </span>
           </div>
         </ScrollReveal>

@@ -3,6 +3,7 @@ import {
   Mail,
   MessageCircle,
 } from "lucide-react";
+import { FaGithub, FaLinkedinIn, FaMedium } from "react-icons/fa";
 
 import Container from "@/src/components/ui/Container";
 import ScrollReveal from "@/src/components/ui/ScrollReveal";
@@ -10,21 +11,46 @@ import SectionAtmosphere from "../ui/SectionAtmosphere";
 
 const EMAIL = "your-email@example.com";
 
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/YOUR_PROFILE",
+    icon: FaLinkedinIn,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/YOUR_USERNAME",
+    icon: FaGithub,
+  },
+  {
+    label: "Medium",
+    href: "https://medium.com/@shankarmadeshvaran",
+    icon: FaMedium,
+  },
+];
+
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 border-t border-white/[0.08] py-32"
+      className="relative overflow-hidden border-t border-white/[0.08] py-32"
     >
       <SectionAtmosphere variant="violet" />
-      <Container>
+
+      <Container className="relative">
         <ScrollReveal>
           <div className="group relative overflow-hidden rounded-3xl border border-white/[0.1] bg-white/[0.02] px-7 py-16 md:px-14 md:py-20">
-            {/* Ambient glow */}
-            <div className="pointer-events-none absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-blue-500/[0.06] blur-3xl transition-all duration-1000 group-hover:bg-blue-500/[0.09]" />
+            {/* Primary glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-blue-500/[0.055] blur-3xl transition-all duration-1000 group-hover:bg-blue-500/[0.08]"
+            />
 
             {/* Secondary glow */}
-            <div className="pointer-events-none absolute bottom-0 left-1/2 h-40 w-80 -translate-x-1/2 rounded-full bg-violet-500/[0.025] blur-3xl" />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-0 left-1/2 h-40 w-80 -translate-x-1/2 rounded-full bg-violet-500/[0.025] blur-3xl"
+            />
 
             <div className="relative mx-auto max-w-4xl text-center">
               {/* Icon */}
@@ -42,30 +68,28 @@ export default function Contact() {
 
               {/* Heading */}
               <h2 className="mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-white md:text-6xl lg:text-7xl">
-                Let&apos;s build something
+                Building something
                 <br />
-                <span className="text-neutral-500">
-                  meaningful.
+                <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+                  ambitious?
                 </span>
               </h2>
 
               {/* Description */}
               <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-neutral-400 md:text-lg">
-                Whether it&apos;s a mobile product, architecture challenge,
-                engineering problem, or an opportunity to build something
-                ambitious — I&apos;d love to hear about it.
+                Whether you&apos;re building a mobile product, solving
+                an architecture challenge, improving an engineering
+                system, or exploring AI-powered development — let&apos;s
+                talk.
               </p>
 
-              {/* CTA */}
+              {/* Primary CTA */}
               <div className="mt-10 flex justify-center">
                 <a
                   href={`mailto:${EMAIL}`}
                   className="group/cta inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-sm font-semibold !text-black shadow-[0_0_0_1px_rgba(255,255,255,0.1)] transition-all duration-300 hover:scale-105 hover:bg-neutral-100 hover:shadow-[0_0_40px_rgba(255,255,255,0.08)]"
                 >
-                  <Mail
-                    size={16}
-                    className="text-black"
-                  />
+                  <Mail size={16} className="text-black" />
 
                   <span className="!text-black">
                     Get in touch
@@ -78,8 +102,28 @@ export default function Contact() {
                 </a>
               </div>
 
+              {/* Social links */}
+              <div className="mt-8 flex items-center justify-center gap-3">
+                {socialLinks.map((social) => {
+                  const Icon = social.icon;
+
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.02] text-neutral-500 transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.16] hover:bg-white/[0.05] hover:text-white"
+                    >
+                      <Icon size={15} />
+                    </a>
+                  );
+                })}
+              </div>
+
               {/* Availability */}
-              <div className="mt-7 flex items-center justify-center gap-2 text-xs text-neutral-600">
+              <div className="mt-8 flex items-center justify-center gap-2 text-xs text-neutral-600">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400/70" />
 
                 <span>

@@ -29,6 +29,7 @@ export default function Home() {
       <Architecture />
       <Articles />
       <Contact />
+      <Footer/>
     </main>
   );
 }
