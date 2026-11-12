@@ -7,6 +7,7 @@ import {
 import Container from "@/src/components/ui/Container";
 import SectionHeading from "@/src/components/ui/SectionHeading";
 import ScrollReveal from "@/src/components/ui/ScrollReveal";
+import SectionAtmosphere from "../ui/SectionAtmosphere";
 
 const MEDIUM_PROFILE =
   "https://medium.com/@shankarmadeshvaran";
@@ -68,6 +69,7 @@ export default function Articles() {
       id="articles"
       className="scroll-mt-24 border-t border-white/[0.08] py-32"
     >
+      <SectionAtmosphere variant="blue" />
       <Container>
         <ScrollReveal>
           <SectionHeading

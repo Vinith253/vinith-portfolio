@@ -89,3 +89,58 @@ section[id] {
     scroll-behavior: auto !important;
   }
 }
+
+/* Premium section transitions */
+
+.section-glow {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 700px;
+  height: 500px;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  filter: blur(140px);
+  opacity: 0.35;
+}
+
+/* Premium card rendering */
+
+.group {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Smooth anchor navigation */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent animated elements from creating horizontal scroll */
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.section-divider {
+  position: relative;
+}
+
+.section-divider::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(90%, 1100px);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+}

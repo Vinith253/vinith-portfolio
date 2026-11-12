@@ -8,6 +8,8 @@ import Magnetic from "@/src/components/ui/Magnetic";
 
 const technologies = [
   "React Native",
+  "React",
+  "JavaScript",
   "TypeScript",
   "iOS",
   "Mobile Architecture",

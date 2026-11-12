@@ -1,29 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { ReactNode } from "react";
 
 type ScrollRevealProps = {
-  children: ReactNode;
-  delay?: number;
-  duration?: number;
-  y?: number;
+  children: React.ReactNode;
   className?: string;
+  delay?: number;
 };
 
 export default function ScrollReveal({
   children,
-  delay = 0,
-  duration = 0.7,
-  y = 30,
   className = "",
+  delay = 0,
 }: ScrollRevealProps) {
   return (
     <motion.div
       className={className}
       initial={{
         opacity: 0,
-        y,
+        y: 28,
       }}
       whileInView={{
         opacity: 1,
@@ -34,7 +29,7 @@ export default function ScrollReveal({
         amount: 0.15,
       }}
       transition={{
-        duration,
+        duration: 0.7,
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}

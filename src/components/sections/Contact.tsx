@@ -6,6 +6,7 @@ import {
 
 import Container from "@/src/components/ui/Container";
 import ScrollReveal from "@/src/components/ui/ScrollReveal";
+import SectionAtmosphere from "../ui/SectionAtmosphere";
 
 const EMAIL = "your-email@example.com";
 
@@ -15,6 +16,7 @@ export default function Contact() {
       id="contact"
       className="scroll-mt-24 border-t border-white/[0.08] py-32"
     >
+      <SectionAtmosphere variant="violet" />
       <Container>
         <ScrollReveal>
           <div className="group relative overflow-hidden rounded-3xl border border-white/[0.1] bg-white/[0.02] px-7 py-16 md:px-14 md:py-20">

@@ -15,28 +15,20 @@ import Contact from "@/src/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#050505] text-white">
-
+    <main
+      id="top"
+      className="min-h-screen bg-[#050505] text-white"
+    >
       <Navbar />
 
       <Hero />
-
       <About />
-
       <Experience />
-
       <Skills />
-
       <Projects />
-
       <Architecture />
-
       <Articles />
-
       <Contact />
-
-      <Footer />
-
     </main>
   );
 }

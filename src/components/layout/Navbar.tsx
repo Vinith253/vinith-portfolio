@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Logo from "./logo";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -98,15 +99,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex h-[82px] max-w-[1400px] items-center justify-between px-6 lg:px-12">
         {/* Logo */}
-        <Link
-          href="/"
-          className="group relative text-2xl font-bold tracking-[-0.05em]"
-        >
-          VS
-          <span className="text-blue-400 transition-colors duration-300 group-hover:text-violet-400">
-            .
-          </span>
-        </Link>
+        <Logo />
 
         {/* Navigation */}
         <div className="hidden items-center rounded-full border border-white/[0.08] bg-black/40 p-1 backdrop-blur-xl md:flex">
