@@ -19,8 +19,6 @@ const skillGroups = [
     description:
       "Building production-grade cross-platform applications with deep native platform experience.",
     icon: Smartphone,
-        featured: true,
-
     skills: [
       "React Native",
       "TypeScript",
@@ -37,6 +35,7 @@ const skillGroups = [
     description:
       "Designing scalable mobile systems with clear boundaries, performance, and long-term maintainability.",
     icon: Layers3,
+    featured: true,
     skills: [
       "New Architecture",
       "Fabric",
@@ -102,8 +101,6 @@ const skillGroups = [
     description:
       "Strong foundations across frontend engineering, APIs, debugging, and modern developer tooling.",
     icon: Code2,
-        featured: true,
-
     skills: [
       "React",
       "Next.js",
@@ -120,7 +117,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="scroll-mt-24 border-t border-white/[0.08] py-32"
+      className="scroll-mt-24 border-t border-white/[0.08] py-24 sm:py-28 lg:py-32"
     >
       <Container>
         <ScrollReveal>
@@ -139,29 +136,29 @@ export default function Skills() {
               <ScrollReveal
                 key={group.title}
                 delay={index * 0.07}
+                className="h-full"
               >
                 <article
-                  className={`group relative h-full overflow-hidden rounded-2xl border p-7 transition-all duration-500 hover:-translate-y-1 ${
+                  tabIndex={0}
+                  className={`group relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-2xl border p-6 outline-none transition-all duration-500 sm:min-h-[330px] sm:p-7 ${
                     group.featured
-                      ? "border-violet-400/[0.16] bg-violet-500/[0.018] hover:border-violet-400/[0.24] hover:bg-violet-500/[0.03]"
-                      : "border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.025]"
+                      ? "border-violet-400/[0.16] bg-violet-500/[0.018] hover:border-violet-400/[0.28] hover:bg-violet-500/[0.03] focus-visible:border-violet-400/[0.28]"
+                      : "border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.025] focus-visible:border-white/[0.18]"
                   }`}
                 >
-                  {/* Ambient glow */}
                   <div
                     aria-hidden="true"
-                    className={`pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full blur-3xl opacity-0 transition-opacity duration-700 group-hover:opacity-100 ${
+                    className={`pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full blur-3xl opacity-0 transition-all duration-700 group-hover:scale-125 group-hover:opacity-100 ${
                       group.featured
-                        ? "bg-violet-500/[0.08]"
-                        : "bg-blue-500/[0.04]"
+                        ? "bg-violet-500/[0.09]"
+                        : "bg-blue-500/[0.045]"
                     }`}
                   />
 
-                  <div className="relative">
-                    {/* Header */}
+                  <div className="relative flex h-full flex-col">
                     <div className="flex items-center justify-between">
                       <div
-                        className={`flex h-11 w-11 items-center justify-center rounded-xl border ${
+                        className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-500 group-hover:scale-105 ${
                           group.featured
                             ? "border-violet-400/[0.16] bg-violet-400/[0.05]"
                             : "border-white/[0.08] bg-white/[0.025]"
@@ -182,8 +179,7 @@ export default function Skills() {
                       </span>
                     </div>
 
-                    {/* Title */}
-                    <div className="mt-7 flex items-center gap-2">
+                    <div className="mt-6 flex flex-wrap items-center gap-2 sm:mt-7">
                       <h3 className="text-xl font-semibold tracking-tight text-white">
                         {group.title}
                       </h3>
@@ -195,25 +191,24 @@ export default function Skills() {
                       )}
                     </div>
 
-                    {/* Description */}
                     <p className="mt-3 text-sm leading-6 text-neutral-500">
                       {group.description}
                     </p>
 
-                    {/* Skills */}
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {group.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[11px] text-neutral-500 transition-all duration-300 group-hover:border-white/[0.11] group-hover:text-neutral-400"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                    <div className="mt-auto pt-6">
+                      <div className="flex flex-wrap gap-2">
+                        {group.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="rounded-full border border-white/[0.07] bg-white/[0.02] px-2.5 py-1.5 text-[10px] text-neutral-500 transition-colors duration-300 group-hover:border-white/[0.12] group-hover:text-neutral-300 sm:px-3 sm:text-[11px]"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  {/* Bottom accent */}
                   <div
                     aria-hidden="true"
                     className={`absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r transition-transform duration-700 group-hover:scale-x-100 ${
@@ -228,14 +223,15 @@ export default function Skills() {
           })}
         </div>
 
-        {/* Closing statement */}
         <ScrollReveal delay={0.3}>
-          <div className="mt-10 flex items-center gap-3 text-sm text-neutral-600">
-            <Sparkles size={15} className="text-violet-400/50" />
-
+          <div className="mt-8 flex items-start gap-3 text-sm text-neutral-600 sm:items-center">
+            <Sparkles
+              size={15}
+              className="mt-0.5 shrink-0 text-violet-400/50 sm:mt-0"
+            />
             <span>
-              Always learning, experimenting, and improving the way
-              software is built.
+              Always learning, experimenting, and improving the way software
+              is built.
             </span>
           </div>
         </ScrollReveal>
