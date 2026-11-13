@@ -1,8 +1,5 @@
 import Navbar from "@/src/components/layout/Navbar";
 import Footer from "@/src/components/layout/Footer";
-import AmbientBackground from "@/src/components/layout/AmbientBackground";
-import MouseSpotlight from "@/src/components/layout/MouseSpotlight";
-import ScrollProgress from "@/src/components/layout/ScrollProgress";
 
 import Hero from "@/src/components/sections/Hero";
 import About from "@/src/components/sections/About";
