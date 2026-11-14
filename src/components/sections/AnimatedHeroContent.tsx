@@ -1,8 +1,18 @@
+
+
 "use client";
 
+import {
+  ArrowRight,
+  Mail,
+  MapPin,
+} from "lucide-react";
+import {
+  FaGithub,
+  FaLinkedinIn,
+  FaMedium,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Mail, MapPin } from "lucide-react";
-import { FaGithub, FaLinkedinIn, FaMedium } from "react-icons/fa";
 
 import HeroVisual from "./HeroVisual";
 
@@ -30,206 +40,178 @@ const socialLinks = [
 ];
 
 export default function AnimatedHeroContent() {
-  const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <div className="relative min-h-screen">
-      <div className="grid min-h-screen items-center py-28 lg:grid-cols-[52%_48%]">
-        {/* LEFT */}
-        <div className="relative z-20 max-w-[650px]">
-          {/* Availability */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.6,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="mb-8 flex items-center gap-3 text-sm text-neutral-400"
-          >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-50" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-blue-400" />
-            </span>
+    <div className="grid min-h-screen items-center py-24 sm:py-28 lg:grid-cols-[52%_48%] lg:py-28">
+      <div className="relative z-10 flex flex-col items-start">
+        {/* Availability */}
+        <motion.div
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.1,
+          }}
+          className="flex items-center gap-2"
+        >
+          <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400/80" />
 
-            <span>Open to Senior / Lead Mobile opportunities</span>
-          </motion.div>
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+            Available for opportunities
+          </span>
+        </motion.div>
 
-          {/* Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.08,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="whitespace-nowrap text-6xl font-semibold leading-none tracking-[-0.055em] text-white sm:text-7xl md:text-8xl lg:text-[6rem]"
-          >
-            Vinith S.
-          </motion.h1>
+        {/* Name */}
+        <motion.p
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.18,
+          }}
+              className="whitespace-nowrap text-6xl font-semibold leading-none tracking-[-0.055em] text-white sm:text-7xl md:text-8xl lg:text-[6rem]"
+  >
+          Vinith S.
+        </motion.p>
 
-          {/* Title */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.18,
-            }}
-            className="mt-7 max-w-[600px] bg-gradient-to-r from-violet-400 via-purple-400 to-blue-400 bg-clip-text text-4xl font-semibold leading-[1.05] tracking-tight text-transparent md:text-5xl lg:whitespace-nowrap"
-          >
-            Senior Mobile Engineer
-          </motion.h2>
+        {/* Main heading */}
+        <motion.h1
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.25,
+          }}
+          className="mt-4 max-w-[600px] bg-gradient-to-r from-violet-400 via-purple-400 to-blue-400 bg-clip-text text-4xl font-semibold leading-[1.05] tracking-tight text-transparent sm:text-5xl lg:mt-7 lg:whitespace-nowrap lg:text-5xl"
+        >
+          Senior Mobile Engineer
+        </motion.h1>
 
-          {/* Specialization */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.25,
-            }}
-            className="mt-4 max-w-[500px] text-2xl font-medium leading-tight tracking-tight text-neutral-200 md:text-[2rem]"
-          >
-            React Native &amp;
-            <br />
-            Mobile Architecture
-          </motion.p>
+        {/* Subtitle */}
+        <motion.p
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.35,
+          }}
+          className="mt-4 text-base font-medium text-neutral-300 sm:text-lg"
+        >
+          React Native &amp; Mobile Architecture
+        </motion.p>
 
-          {/* Accent */}
-          <motion.div
-            initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 64, opacity: 1 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.35,
-            }}
-            className="mt-9 h-[3px] rounded-full bg-gradient-to-r from-violet-400 to-blue-400"
-          />
+        {/* Description */}
+        <motion.p
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.42,
+          }}
+          className="mt-6 max-w-xl text-base leading-7 text-neutral-400 sm:text-lg sm:leading-8"
+        >
+          8+ years building production-grade mobile
+          applications, scalable architectures, developer
+          tooling, and AI-powered engineering solutions.
+        </motion.p>
 
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.4,
-            }}
-            className="mt-8 max-w-[570px] text-base leading-8 text-neutral-400 md:text-lg"
-          >
-            8+ years building production-grade mobile applications, scalable
-            architectures, developer tooling, and AI-powered engineering
-            solutions.
-          </motion.p>
+        {/* Location + Social links */}
+        <motion.div
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.5,
+          }}
+          className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3"
+        >
+          <div className="flex items-center gap-2 text-sm text-neutral-500">
+            <MapPin
+              size={15}
+              className="text-blue-300/60"
+            />
 
-          {/* Location + Socials */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.5,
-            }}
-            className="mt-8 flex flex-wrap items-center gap-5"
-          >
-            <div className="flex items-center gap-2.5 text-sm text-neutral-400">
-              <MapPin className="h-4 w-4 text-neutral-500" />
-              <span>Bengaluru, India</span>
-            </div>
-
-            <span className="hidden h-6 w-px bg-white/10 sm:block" />
-
-            <div className="flex items-center gap-2">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target={social.label === "Email" ? undefined : "_blank"}
-                    rel={
-                      social.label === "Email"
-                        ? undefined
-                        : "noopener noreferrer"
-                    }
-                    aria-label={social.label}
-                    className="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.025] text-neutral-500 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
-                  >
-                    <Icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                  </a>
-                );
-              })}
-            </div>
-          </motion.div>
-
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.6,
-            }}
-            className="mt-9 flex flex-wrap gap-4"
-          >
-            <button
-              type="button"
-              onClick={scrollToProjects}
-              className="group inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-200"
-            >
-              View My Work
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </button>
-
-            <button
-              type="button"
-              onClick={scrollToContact}
-              className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.02] px-7 py-3.5 text-sm font-semibold text-neutral-300 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05] hover:text-white"
-            >
-              <p>Let&apos;s Connect</p>
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
-          </motion.div>
-        </div>
-
-        {/* RIGHT */}
-        <div className="relative flex min-w-0 items-center justify-center lg:pl-4">
-          <div className="w-full max-w-[520px]">
-            <HeroVisual />
+            <span>Bengaluru, India</span>
           </div>
-        </div>
+
+          <div className="hidden h-4 w-px bg-white/[0.08] sm:block" />
+
+          <div className="flex items-center gap-2">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={
+                    social.label === "Email"
+                      ? undefined
+                      : "_blank"
+                  }
+                  rel={
+                    social.label === "Email"
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
+                  aria-label={social.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.02] text-neutral-500 transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.16] hover:bg-white/[0.05] hover:text-white"
+                >
+                  <Icon size={14} />
+                </a>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* CTA buttons */}
+        <motion.div
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.58,
+          }}
+          className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row"
+        >
+          <a
+            href="#projects"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold !text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-neutral-100 sm:w-auto"
+          >
+            View My Work
+
+            <ArrowRight
+              size={15}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </a>
+
+          <a
+            href="#contact"
+            className="inline-flex w-full items-center justify-center rounded-full border border-white/[0.1] bg-white/[0.02] px-6 py-3.5 text-sm font-medium text-neutral-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/[0.18] hover:bg-white/[0.05] hover:text-white sm:w-auto"
+          >
+            Let&apos;s Connect
+          </a>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Hero visual */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-neutral-600 md:flex"
+        initial={false}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 1,
+          delay: 0.35,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="relative mt-14 flex min-w-0 items-center justify-center sm:mt-16 lg:mt-0 lg:pl-4"
       >
-        <span>Scroll</span>
-
-        <motion.span
-          animate={{ y: [0, 5, 0] }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="h-8 w-px bg-gradient-to-b from-neutral-600 to-transparent"
-        />
+        <div className="w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[520px]">
+          <HeroVisual />
+        </div>
       </motion.div>
     </div>
   );
