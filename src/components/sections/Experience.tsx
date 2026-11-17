@@ -1,322 +1,374 @@
-import {
-  BriefcaseBusiness,
-  CalendarDays,
-  Layers3,
-  MapPin,
-  Sparkles,
-  TrendingDown,
-} from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { ChevronDown, MapPin } from "lucide-react";
 
 import Container from "@/src/components/ui/Container";
 import SectionHeading from "@/src/components/ui/SectionHeading";
 import ScrollReveal from "@/src/components/ui/ScrollReveal";
 
-const experiences = [
+type ExperienceItem = {
+  company: string;
+  location: string;
+  role: string;
+  period: string;
+  impact: string;
+  highlights: string[];
+  technologies: string[];
+  current?: boolean;
+};
+
+const experiences: ExperienceItem[] = [
   {
-    period: "Aug 2025 — Present",
     company: "Dbiz Solutions",
+    location: "Bengaluru",
     role: "Software Analyst – Mobile (Grade B)",
-    location: "Bengaluru, India",
-    description:
-      "Leading mobile engineering initiatives across React Native and native iOS, with ownership spanning architecture, development, CI/CD, AI-powered developer tooling, and production reliability.",
+    period: "Aug 2025 — Present",
+    impact:
+      "Improved development velocity, code quality, and engineering efficiency through scalable architecture, automation, and AI-assisted workflows.",
     highlights: [
-      "Owned and delivered core React Native modules end-to-end.",
-      "Architected reusable UI and utility component systems across 20+ components, reducing duplicate code by around 40%.",
-      "Implemented CI/CD automation using Azure DevOps.",
-      "Built an LLM-powered PR review system with automated comment resolution.",
-      "Delivered deep linking, multi-environment deployments, and production support.",
+      "Owned and delivered a core React Native mobile module end-to-end, driving architecture decisions and mentoring engineers.",
+      "Architected reusable UI and utility component systems with centralized theming, reducing duplicate code by ~40% across 20+ components.",
+      "Designed Azure DevOps CI/CD automation, reducing PR review time by ~60%.",
+      "Built an AI-powered LLM-based PR review system with automated comment resolution.",
+      "Delivered deep linking and deferred deep linking with multi-environment support.",
+      "Led production support and incident management while improving application stability.",
     ],
     technologies: [
       "React Native",
       "TypeScript",
-      "Swift",
-      "iOS",
       "Azure DevOps",
-      "AI / LLM",
+      "CI/CD",
+      "LLM",
+      "AI",
+      "Deep Linking",
     ],
-    impact: [
-      {
-        value: "40%",
-        label: "Less duplicate code",
-        icon: TrendingDown,
-      },
-      {
-        value: "20+",
-        label: "Reusable components",
-        icon: Layers3,
-      },
-      {
-        value: "AI",
-        label: "PR review automation",
-        icon: Sparkles,
-      },
-    ],
+    current: true,
   },
   {
-    period: "Aug 2023 — Aug 2025",
     company: "Integrate",
-    role: "Software Engineer – L2",
-    location: "India",
-    description:
-      "Built and maintained production mobile applications with a strong focus on React Native development, reusable architecture, reliable feature delivery, and application performance.",
+    location: "Chennai",
+    role: "Software Engineer – L2 | React Native & React Developer",
+    period: "Aug 2023 — Aug 2025",
+    impact:
+      "Improved development efficiency and code quality through modular architecture, reusable components, and consistent testing practices.",
     highlights: [
-      "Developed and maintained production React Native applications.",
-      "Built reusable mobile components and application features.",
-      "Worked across architecture, state management, and API integration.",
-      "Contributed to performance, reliability, and maintainability improvements.",
+      "Engineered modular, reusable React Native components, improving code reusability by ~60%.",
+      "Developed and maintained React web components and shared frontend architecture.",
+      "Applied Clean Architecture, MVVM, SOLID principles, and established design patterns.",
+      "Improved application performance and reduced technical debt across multiple releases.",
+      "Improved unit testing with Jest and code quality with SonarQube.",
+      "Collaborated with cross-functional teams to deliver features reliably.",
     ],
     technologies: [
       "React Native",
+      "React",
       "TypeScript",
-      "JavaScript",
-      "Redux",
-      "iOS",
-    ],
-    impact: [
-      {
-        value: "RN",
-        label: "Production applications",
-        icon: BriefcaseBusiness,
-      },
-      {
-        value: "API",
-        label: "Integrated data flows",
-        icon: Layers3,
-      },
-      {
-        value: "Scale",
-        label: "Reusable architecture",
-        icon: Sparkles,
-      },
+      "Jest",
+      "SonarQube",
+      "Clean Architecture",
+      "MVVM",
     ],
   },
   {
-    period: "Apr 2020 — Aug 2023",
     company: "Fibonalabs",
+    location: "Bengaluru",
     role: "Software Development Engineer II",
-    location: "India",
-    description:
-      "Worked across React Native and native mobile technologies, contributing to product development, reusable architecture, platform integrations, and engineering practices.",
+    period: "Apr 2020 — Aug 2023",
+    impact:
+      "Delivered scalable mobile solutions while providing technical leadership, mentoring engineers, and improving development and release reliability.",
     highlights: [
-      "Built and maintained production mobile applications.",
-      "Developed features using React Native and TypeScript.",
-      "Worked with native mobile capabilities and platform integrations.",
-      "Contributed to application architecture and reusable components.",
+      "Built scalable React Native UI components using reusable design patterns.",
+      "Led and mentored a team of 8 engineers through technical guidance and code reviews.",
+      "Applied Clean Architecture, MVVM, SOLID principles, and design patterns.",
+      "Integrated payment gateway solutions and reliable transaction flows.",
+      "Improved CI/CD pipelines and deployment workflows.",
+      "Collaborated with product and cross-functional teams across end-to-end delivery.",
     ],
     technologies: [
       "React Native",
       "TypeScript",
-      "JavaScript",
-      "iOS",
-      "Redux",
-    ],
-    impact: [
-      {
-        value: "RN",
-        label: "Cross-platform development",
-        icon: BriefcaseBusiness,
-      },
-      {
-        value: "iOS",
-        label: "Native integrations",
-        icon: Layers3,
-      },
-      {
-        value: "UI",
-        label: "Reusable components",
-        icon: Sparkles,
-      },
+      "Clean Architecture",
+      "MVVM",
+      "SOLID",
+      "CI/CD",
+      "Payment Integration",
     ],
   },
   {
-    period: "May 2018 — Mar 2020",
-    company: "DesmosLab Pvt Ltd",
+    company: "DesmosLab",
+    location: "Coimbatore",
     role: "Software Developer",
-    location: "Coimbatore, India",
-    description:
-      "Built a strong foundation in mobile development while working across native iOS, Flutter, and React Native technologies.",
+    period: "May 2018 — Mar 2020",
+    impact:
+      "Built a strong foundation in mobile development and cross-platform technologies.",
     highlights: [
-      "Launched an iOS application using MVC architecture.",
-      "Worked on native iOS application development.",
-      "Experimented with Flutter and React Native.",
-      "Led the migration of a legacy application to Flutter.",
+      "Developed and launched the first iOS application using MVC architecture.",
+      "Led migration of a legacy application to Flutter.",
+      "Explored React Native and Flutter for cross-platform development.",
+      "Contributed to UI implementation and API integration.",
     ],
     technologies: [
       "iOS",
       "Swift",
-      "Objective-C",
       "Flutter",
       "React Native",
-    ],
-    impact: [
-      {
-        value: "iOS",
-        label: "First native application",
-        icon: BriefcaseBusiness,
-      },
-      {
-        value: "Flutter",
-        label: "Legacy migration",
-        icon: Layers3,
-      },
-      {
-        value: "RN",
-        label: "Early cross-platform work",
-        icon: Sparkles,
-      },
+      "MVC",
+      "REST APIs",
     ],
   },
 ];
 
 export default function Experience() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
   return (
     <section
       id="experience"
-      className="scroll-mt-[88px] border-t border-white/[0.08] py-24 sm:py-28 lg:py-32"
+      className="relative w-full overflow-hidden border-t border-white/10 py-24 sm:py-28 lg:py-32"
     >
-      <Container>
+      {/* Ambient background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 top-1/3 h-[420px] w-[420px] rounded-full bg-blue-500/[0.025] blur-[120px]"
+      />
+
+      <Container className="relative w-full min-w-0">
         <ScrollReveal>
           <SectionHeading
             eyebrow="Experience"
-            title="Engineering with ownership."
-            description="8+ years building mobile products, evolving architectures, improving engineering workflows, and owning software from development to production."
+            title="Building, leading, and shipping."
+            description="A progression from hands-on mobile development to owning architecture, engineering systems, technical leadership, and production delivery."
           />
         </ScrollReveal>
 
-        <div className="relative mt-14 sm:mt-16 lg:mt-20">
+        <div className="relative mt-16 w-full min-w-0">
           {/* Desktop timeline */}
           <div
             aria-hidden="true"
-            className="absolute bottom-0 left-[19px] top-0 hidden w-px bg-gradient-to-b from-blue-400/50 via-white/[0.08] to-transparent md:block"
+            className="absolute bottom-8 left-[11px] top-8 hidden w-px bg-gradient-to-b from-violet-400/40 via-white/[0.08] to-transparent xl:block"
           />
 
-          <div className="space-y-6 sm:space-y-8 lg:space-y-10">
-            {experiences.map((experience, index) => (
-              <ScrollReveal
-                key={experience.company}
-                delay={index * 0.08}
-              >
-                <article className="group relative md:pl-12">
-                  {/* Timeline node */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute left-[19px] top-8 hidden h-3 w-3 -translate-x-1/2 rounded-full border border-blue-400/40 bg-[#050505] md:block"
-                  >
-                    <div className="absolute inset-[3px] rounded-full bg-blue-400 transition-transform duration-300 group-hover:scale-150" />
-                  </div>
+          <div className="flex w-full min-w-0 flex-col gap-4 sm:gap-5">
+            {experiences.map((experience, index) => {
+              const isExpanded = expandedIndex === index;
 
-                  <div
-                    tabIndex={0}
-                    className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.015] outline-none transition-all duration-500 hover:-translate-y-1 hover:border-white/[0.14] hover:bg-white/[0.025] focus-visible:border-blue-400/30"
+              return (
+                <ScrollReveal
+                  key={experience.company}
+                  delay={index * 0.06}
+                >
+                  <article
+                    className={`group relative block w-full min-w-0 max-w-full overflow-hidden rounded-2xl border transition-all duration-500 ${
+                      isExpanded
+                        ? "border-white/[0.14] bg-white/[0.035]"
+                        : "border-white/[0.07] bg-white/[0.018] hover:border-white/[0.12] hover:bg-white/[0.025]"
+                    }`}
+                    onClick={() =>
+                      setExpandedIndex(
+                        isExpanded ? null : index
+                      )
+                    }
                   >
-                    <div className="relative grid lg:grid-cols-[300px_1fr]">
-                      {/* Company */}
-                      <div className="border-b border-white/[0.06] p-6 sm:p-7 lg:border-b-0 lg:border-r lg:p-8">
-                        <div className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.16em] text-neutral-600 sm:text-[11px] sm:tracking-[0.18em]">
-                          <CalendarDays size={13} />
-                          <span>{experience.period}</span>
+                    {/* Timeline marker */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute left-0 top-7 hidden h-6 w-6 -translate-x-1/2 items-center justify-center xl:flex"
+                    >
+                      <div
+                        className={`h-2.5 w-2.5 rounded-full border transition-all duration-500 ${
+                          experience.current
+                            ? "border-blue-300 bg-blue-400 shadow-[0_0_16px_rgba(96,165,250,0.5)]"
+                            : "border-neutral-600 bg-[#080808] group-hover:border-neutral-400"
+                        }`}
+                      />
+                    </div>
+
+                    {/* ================================= */}
+                    {/* COLLAPSED HEADER */}
+                    {/* ================================= */}
+
+                    <div
+                      className="
+                        grid
+                        w-full
+                        min-w-0
+                        cursor-pointer
+                        grid-cols-1
+                        gap-5
+                        p-6
+                        sm:p-7
+                        xl:grid-cols-[minmax(0,1fr)_minmax(0,360px)_40px]
+                        xl:items-center
+                        xl:gap-8
+                        xl:py-6
+                        xl:pl-10
+                        xl:pr-7
+                      "
+                    >
+                      {/* Company / Role */}
+                      <div className="min-w-0">
+                        <div className="flex min-w-0 flex-wrap items-center gap-3">
+                          <h3 className="min-w-0 max-w-full break-words text-lg font-semibold tracking-tight text-white sm:text-xl">
+                            {experience.company}
+                          </h3>
+
+                          {experience.current && (
+                            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-emerald-300/80">
+                              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                              Current
+                            </span>
+                          )}
                         </div>
 
-                        <h3 className="mt-4 text-xl font-semibold tracking-tight text-white sm:mt-5 sm:text-2xl">
-                          {experience.company}
-                        </h3>
-
-                        <p className="mt-2 text-sm leading-6 text-neutral-400">
+                        <p className="mt-1.5 max-w-full break-words text-sm leading-6 text-neutral-400 sm:text-base">
                           {experience.role}
                         </p>
 
-                        <div className="mt-4 flex items-center gap-2 text-xs text-neutral-600 sm:mt-5">
-                          <MapPin size={13} />
-                          <span>{experience.location}</span>
+                        <div className="mt-3 flex min-w-0 max-w-full flex-wrap items-center gap-x-4 gap-y-2 text-xs text-neutral-600">
+                          <span>{experience.period}</span>
+
+                          <span className="hidden h-3 w-px bg-white/[0.08] sm:block" />
+
+                          <span className="inline-flex min-w-0 items-center gap-1.5">
+                            <MapPin
+                              size={12}
+                              className="shrink-0"
+                            />
+                            <span>{experience.location}</span>
+                          </span>
                         </div>
                       </div>
 
-                      {/* Details */}
-                      <div className="p-6 sm:p-7 lg:p-8">
-                        <div className="flex gap-3">
-                          <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.025]">
-                            <BriefcaseBusiness
-                              size={15}
-                              className="text-blue-300/70"
-                            />
+                      {/* Impact */}
+                      <div className="hidden min-w-0 xl:block">
+                        <p className="line-clamp-2 max-w-full break-words text-sm leading-6 text-neutral-500 transition-colors duration-300 group-hover:text-neutral-400">
+                          {experience.impact}
+                        </p>
+                      </div>
+
+                      {/* Expand indicator */}
+                      <div className="flex items-center justify-end">
+                        {!isExpanded && (
+                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.02] text-neutral-500 transition-all duration-300 group-hover:border-white/[0.14] group-hover:text-neutral-300 xl:group-hover:hidden">
+                            <ChevronDown size={16} />
                           </div>
-
-                          <p className="text-sm leading-7 text-neutral-300 sm:text-base">
-                            {experience.description}
-                          </p>
-                        </div>
-
-                        <div className="mt-6 space-y-3 sm:mt-7">
-                          {experience.highlights.map((highlight) => (
-                            <div
-                              key={highlight}
-                              className="flex gap-3 text-sm leading-6 text-neutral-500"
-                            >
-                              <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-blue-400/60" />
-                              <span>{highlight}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Impact */}
-                        <div className="mt-6 border-t border-white/[0.06] pt-6 sm:mt-7">
-                          <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-600">
-                            Impact
-                          </p>
-
-                          <div className="grid grid-cols-1 gap-2.5 min-[400px]:grid-cols-3 sm:gap-3">
-                            {experience.impact.map((item) => {
-                              const Icon = item.icon;
-
-                              return (
-                                <div
-                                  key={item.label}
-                                  className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 sm:p-3.5"
-                                >
-                                  <div className="flex items-center justify-between">
-                                    <span className="text-lg font-semibold tracking-tight text-white">
-                                      {item.value}
-                                    </span>
-
-                                    <Icon
-                                      size={13}
-                                      className="text-blue-300/50"
-                                    />
-                                  </div>
-
-                                  <p className="mt-1 text-[10px] leading-4 text-neutral-600">
-                                    {item.label}
-                                  </p>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-
-                        {/* Technologies */}
-                        <div className="mt-6 flex flex-wrap gap-2 sm:mt-7">
-                          {experience.technologies.map((technology) => (
-                            <span
-                              key={technology}
-                              className="rounded-full border border-white/[0.07] bg-white/[0.02] px-2.5 py-1.5 text-[10px] text-neutral-500 sm:px-3 sm:text-[11px]"
-                            >
-                              {technology}
-                            </span>
-                          ))}
-                        </div>
+                        )}
                       </div>
                     </div>
 
+                    {/* ================================= */}
+                    {/* MOBILE / TABLET EXPAND LABEL */}
+                    {/* ================================= */}
+
+                    <div className="px-6 pb-5 sm:px-7 xl:hidden">
+                      <span className="text-xs font-medium uppercase tracking-[0.16em] text-neutral-600">
+                        {isExpanded
+                          ? "Hide details"
+                          : "View details"}
+                      </span>
+                    </div>
+
+                    {/* ================================= */}
+                    {/* EXPANDED CONTENT */}
+                    {/* ================================= */}
+
                     <div
-                      aria-hidden="true"
-                      className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-blue-400/70 via-violet-400/40 to-transparent transition-transform duration-700 group-hover:scale-x-100"
-                    />
-                  </div>
-                </article>
-              </ScrollReveal>
-            ))}
+                      className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out ${
+                        isExpanded
+                          ? "grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0 xl:group-hover:grid-rows-[1fr] xl:group-hover:opacity-100"
+                      }`}
+                    >
+                      <div className="min-h-0 overflow-hidden">
+                        <div className="border-t border-white/[0.06] px-6 pb-7 pt-6 sm:px-7 xl:pl-10 xl:pr-7">
+                          {/* Impact */}
+                          <div className="max-w-3xl">
+                            <p className="text-xs font-medium uppercase tracking-[0.2em] text-neutral-600">
+                              Impact
+                            </p>
+
+                            <p className="mt-3 max-w-full break-words text-sm leading-7 text-neutral-400 sm:text-base">
+                              {experience.impact}
+                            </p>
+                          </div>
+
+                          {/* Details */}
+                          <div className="mt-7 grid w-full min-w-0 gap-10 xl:grid-cols-[minmax(0,1fr)_220px]">
+                            {/* Contributions */}
+                            <div className="min-w-0">
+                              <p className="text-xs font-medium uppercase tracking-[0.2em] text-neutral-600">
+                                Key Contributions
+                              </p>
+
+                              <div className="mt-4 grid w-full min-w-0 gap-x-8 gap-y-3 md:grid-cols-2">
+                                {experience.highlights.map(
+                                  (highlight) => (
+                                    <div
+                                      key={highlight}
+                                      className="flex min-w-0 gap-3 text-sm leading-6 text-neutral-500"
+                                    >
+                                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-blue-400/60" />
+
+                                      <span className="min-w-0 break-words">
+                                        {highlight}
+                                      </span>
+                                    </div>
+                                  )
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Focus */}
+                            <div className="min-w-0 xl:w-[220px]">
+                              <p className="text-xs font-medium uppercase tracking-[0.2em] text-neutral-600">
+                                Focus
+                              </p>
+
+                              <div className="mt-4 flex flex-wrap gap-2">
+                                {experience.technologies.map(
+                                  (technology) => (
+                                    <span
+                                      key={technology}
+                                      className="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[11px] font-medium text-neutral-500 transition-colors duration-300 group-hover:border-white/[0.1] group-hover:text-neutral-400"
+                                    >
+                                      {technology}
+                                    </span>
+                                  )
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Accent */}
+                          <div className="mt-7">
+                            <div className="h-px w-16 bg-gradient-to-r from-blue-400/40 to-transparent transition-all duration-500 group-hover:w-24" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
+
+        {/* Bottom summary */}
+        <ScrollReveal delay={0.2}>
+          <div className="mt-12 border-t border-white/[0.06] pt-7">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm font-medium text-neutral-300">
+                8+ years across mobile engineering
+              </p>
+
+              <p className="max-w-xl text-sm leading-6 text-neutral-600 sm:text-right">
+                From building mobile features to owning architecture,
+                developer tooling, delivery, and production reliability.
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
       </Container>
     </section>
   );

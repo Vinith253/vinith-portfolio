@@ -5,7 +5,7 @@ import Hero from "@/src/components/sections/Hero";
 import About from "@/src/components/sections/About";
 import Experience from "@/src/components/sections/Experience";
 import Skills from "@/src/components/sections/Skills";
-import Projects from "@/src/components/sections/Projects";
+// import Projects from "@/src/components/sections/Projects";
 import Architecture from "@/src/components/sections/Architecture";
 import Articles from "@/src/components/sections/Articles";
 import Contact from "@/src/components/sections/Contact";
@@ -22,7 +22,7 @@ export default function Home() {
       <About />
       <Experience />
       <Skills />
-      <Projects />
+      {/* <Projects /> */}
       <Architecture />
       <Articles />
       <Contact />

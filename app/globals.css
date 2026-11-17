@@ -105,13 +105,6 @@ section[id] {
   opacity: 0.35;
 }
 
-/* Premium card rendering */
-
-.group {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
 /* Smooth anchor navigation */
 
 html {
