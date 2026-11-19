@@ -1,10 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #f5f5f5;
+  --background: #070709;
+  --foreground: #f5f5f7;
+
+  --surface: #0d0d11;
+  --surface-hover: #111116;
+
   --muted: #a1a1aa;
-  --border: rgba(255, 255, 255, 0.1);
+  --muted-light: #d4d4d8;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
+
+  --accent: #8b5cf6;
+  --accent-secondary: #3b82f6;
 }
 
 * {
@@ -18,21 +28,15 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(59, 130, 246, 0.025),
-      transparent 35%
-    ),
-    var(--background);
+  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(96, 165, 250, 0.25);
-  color: white;
+  background: rgba(139, 92, 246, 0.25);
+  color: #ffffff;
 }
 
 a {
@@ -48,14 +52,14 @@ section[id] {
   scroll-margin-top: 100px;
 }
 
-/* Premium scrollbar */
+/* Scrollbar */
 
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #070709;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -64,59 +68,10 @@ section[id] {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.2);
 }
 
-/* Subtle selection glow */
-
-::selection {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-/* Reduce motion for accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Premium section transitions */
-
-.section-glow {
-  pointer-events: none;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 700px;
-  height: 500px;
-  transform: translateX(-50%);
-  border-radius: 9999px;
-  filter: blur(140px);
-  opacity: 0.35;
-}
-
-/* Smooth anchor navigation */
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Prevent animated elements from creating horizontal scroll */
-
-html,
-body {
-  overflow-x: hidden;
-}
+/* Section divider */
 
 .section-divider {
   position: relative;
@@ -136,4 +91,57 @@ body {
     rgba(255, 255, 255, 0.08),
     transparent
   );
+}
+
+/* Premium card */
+
+.portfolio-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition:
+    border-color 300ms ease,
+    background-color 300ms ease;
+}
+
+.portfolio-card:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+
+/* Accent text */
+
+.accent-text {
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent-secondary)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  section[id] {
+    scroll-margin-top: 80px;
+  }
 }

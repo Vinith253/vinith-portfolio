@@ -26,7 +26,7 @@ export default function ScrollReveal({
   return (
     <motion.div
       className={`w-full min-w-0 ${className}`}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{
         once: true,
