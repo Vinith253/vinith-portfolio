@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-
 import "./globals.css";
 
-import ScrollProgress from "@/src/components/ui/ScrollProgress";
-
 export const metadata: Metadata = {
-  title: "Vinith S. — React Native & Mobile Engineer",
+  title: "Vinith S. | Senior Mobile Engineer",
   description:
-    "Portfolio of Vinith S., a React Native and Mobile Engineer specializing in mobile architecture, native iOS, performance, AI-powered engineering, and production systems.",
+    "Senior Mobile Engineer specializing in React Native, mobile architecture, native iOS, and AI-powered engineering solutions.",
 };
 
 export default function RootLayout({
@@ -17,10 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <ScrollProgress />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

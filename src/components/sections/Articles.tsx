@@ -11,7 +11,7 @@ import ScrollReveal from "@/src/components/ui/ScrollReveal";
 import SectionAtmosphere from "../ui/SectionAtmosphere";
 
 const MEDIUM_PROFILE =
-  "https://medium.com/@shankarmadeshvaran";
+  "https://medium.com/@vinith1496";
 
 const articles = [
   {
@@ -23,6 +23,7 @@ const articles = [
       "A practical deep dive into performance optimization across Fabric, JSI, rendering, startup, memory, and application architecture.",
     topics: ["Fabric", "JSI", "Performance", "Architecture"],
     featured: true,
+    url: 'https://medium.com/@vinith1496/react-native-new-architecture-the-complete-performance-optimization-guide-ae2d69a03ed3'
   },
   {
     number: "02",
@@ -33,6 +34,7 @@ const articles = [
       "A practical approach to debugging production mobile issues, tracing failures, understanding logs, and identifying root causes.",
     topics: ["Debugging", "Crash Analysis", "Logs", "Production"],
     featured: true,
+    url: 'https://medium.com/@vinith1496/production-debugging-in-react-native-from-crash-to-root-cause-35cdfc8f3b66'
   },
   {
     number: "03",
@@ -43,6 +45,7 @@ const articles = [
       "Understanding what happens between launching a React Native application and rendering the first meaningful screen.",
     topics: ["Startup", "Rendering", "Profiling", "Optimization"],
     featured: true,
+    url: 'https://medium.com/@vinith1496/react-native-startup-performance-from-app-launch-to-first-screen-078bccb085ed'
   },
   {
     number: "04",
@@ -53,6 +56,7 @@ const articles = [
       "Exploring how server-driven UI can make mobile products more flexible while maintaining a strong application architecture.",
     topics: ["SDUI", "Architecture", "APIs", "Scalability"],
     featured: true,
+    url: 'https://medium.com/@vinith1496/server-driven-ui-in-react-native-building-dynamic-screens-without-app-releases-b347ecb9a093'
   },
   {
     number: "05",
@@ -63,6 +67,7 @@ const articles = [
       "Lessons from years of working with developers, teams, deadlines, systems, and the people behind the software.",
     topics: ["People", "Teams", "Leadership", "Engineering"],
     featured: false,
+    url: 'https://medium.com/@vinith1496/what-8-years-in-software-development-taught-me-about-people-5edd9c3d66d0'
   },
   {
     number: "06",
@@ -73,6 +78,7 @@ const articles = [
       "A reflection on balancing software engineering with life, learning, experiences, and the world outside the screen.",
     topics: ["Life", "Growth", "Balance", "Reflection"],
     featured: false,
+    url: 'https://medium.com/@vinith1496/a-developers-life-outside-the-screen-bff574026097'
   },
 ];
 
@@ -116,7 +122,7 @@ export default function Articles() {
               className="h-full"
             >
               <a
-                href={MEDIUM_PROFILE}
+                href={article.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Read ${article.title} on Medium`}

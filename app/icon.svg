@@ -1,0 +1,66 @@
+<svg
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient
+      id="bg"
+      x1="80"
+      y1="60"
+      x2="440"
+      y2="460"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#11111A" />
+      <stop offset="1" stop-color="#050505" />
+    </linearGradient>
+
+    <linearGradient
+      id="accent"
+      x1="130"
+      y1="120"
+      x2="390"
+      y2="390"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#A855F7" />
+      <stop offset="1" stop-color="#60A5FA" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect
+    width="512"
+    height="512"
+    rx="120"
+    fill="url(#bg)"
+  />
+
+  <!-- Subtle border -->
+  <rect
+    x="2"
+    y="2"
+    width="508"
+    height="508"
+    rx="118"
+    stroke="rgba(255,255,255,0.12)"
+    stroke-width="4"
+  />
+
+  <!-- VS -->
+  <text
+    x="256"
+    y="318"
+    text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="190"
+    font-weight="700"
+    letter-spacing="-18"
+    fill="url(#accent)"
+  >
+    VS
+  </text>
+</svg>
